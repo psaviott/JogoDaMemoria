@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta name="description" content="Udacity front-end Nanodegree - Projeto Jogo da Memoria" />
+  <meta name="Philipe Sena Saviott" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta charset="utf-8">
+  <title>Jogo da Memória</title>
+  <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  <link rel="stylesheet prefetch" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/media.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <header class="row">
+      <div class="col-md-12">
+        <h1>Jogo da Memória</h1>
+      </div>
+    </header>
+
+    <section class="score-panel row">
+      <ul class="stars col-md-3">
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
+      </ul>
+
+      <span class="moves col-md-2">3</span><div class="moves1">Movimentos</div>
+
+      <div id="clock1" class=col-md-3""></div>
+      <script>
+        setTimeout('getSecs()', 1000);
+      </script>
+
+      <div class="restart col-md-1">
+        <i class="fa fa-repeat"></i>
+      </div>
+
+    </section>
+
+    <div class="row deck-of-cards">
+      <ul id="deck" class="deck">
+        <li class="card">
+          <i class="fa fa-diamond"></i>
+        </li>
+        <li class="card">
+          <i class="fa fa-paper-plane-o"></i>
+        </li>
+        <li class="card match">
+          <i class="fa fa-anchor"></i>
+        </li>
+        <li class="card">
+          <i class="fa fa-bolt"></i>
+        </li>
+        <li class="card">
+          <i class="fa fa-cube"></i>
+        </li>
+        <li class="card match">
+          <i class="fa fa-anchor"></i>
+        </li>
+        <li class="card">
+          <i class="fa fa-leaf"></i>
+        </li>
+        <li class="card">
+          <i class="fa fa-bicycle"></i>
+        </li>
+        <li class="card">
+          <i class="fa fa-diamond"></i>
+        </li>
+        <li class="card">
+          <i class="fa fa-bomb"></i>
+        </li>
+        <li class="card">
+          <i class="fa fa-leaf"></i>
+        </li>
+        <li class="card">
+          <i class="fa fa-bomb"></i>
+        </li>
+        <li class="card open show">
+          <i class="fa fa-bolt"></i>
+        </li>
+        <li class="card">
+          <i class="fa fa-bicycle"></i>
+        </li>
+        <li class="card">
+          <i class="fa fa-paper-plane-o"></i>
+        </li>
+        <li class="card">
+          <i class="fa fa-cube"></i>
+        </li>
+      </ul>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
