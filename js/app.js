@@ -1,6 +1,10 @@
 //Declare all global variables
-var cards = ["fa fa-diamond", "fa fa-paper-plane-o", "fa fa-anchor", "fa fa-bolt", "fa fa-cube", "fa fa-anchor", "fa fa-leaf", "fa fa-bicycle", "fa fa-diamond", "fa fa-bomb", "fa fa-leaf", "fa fa-bomb", "fa fa-bolt", "fa fa-bicycle", "fa fa-paper-plane-o", "fa fa-cube"];
-var click = 0;
+var cards = ["fa fa-diamond", "fa fa-paper-plane-o", "fa fa-anchor", "fa fa-bolt",
+  "fa fa-cube", "fa fa-anchor", "fa fa-leaf", "fa fa-bicycle",
+  "fa fa-diamond", "fa fa-bomb", "fa fa-leaf", "fa fa-bomb", "fa fa-bolt",
+  "fa fa-bicycle", "fa fa-paper-plane-o", "fa fa-cube"
+];
+
 var deck = document.querySelector(".deck");
 var moves = 0;
 var openedCards = [];
@@ -8,20 +12,22 @@ var matchedCardsCounter = 0;
 var stars = document.querySelector(".stars");
 var sHors = "0" + 0;
 var sMins = "0" + 0;
-var sSecs = -1;
+var sSecs = 0;
 var clock = false;
 var timer = "";
 
-clock1.innerHTML = "0" + 0 + ":" + "0" + 0 + ":" + "0" + 0;
-deck.innerHTML = "";
-shuffle(cards);
 play();
 
+// restart game button
+document.querySelector(".restart").onclick = play;
+
 //distribute the shuffled cards on game screem
-cards.forEach(function(card) {
-  var htmlCode = '<li class="card"><i class="' + card + '"></i></li>';
-  deck.innerHTML += htmlCode;
-});
+function distCards() {
+  cards.forEach(function(card) {
+    var htmlCode = '<li class="card"><i class="' + card + '"></i></li>';
+    deck.innerHTML += htmlCode;
+  })
+};
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -47,9 +53,8 @@ deck.onclick = function(e) {
   showCard(e.target);
   handleOpenedCards(e.target);
   decStars();
-  startClock();
+  clock = true;
 };
-
 
 //add move to moves variable
 function incMoves() {
@@ -80,15 +85,14 @@ function handleOpenedCards(card) {
   }
 };
 
-//lock a card
+//lock a matched card
 function lockCard(card) {
   card.className += " match";
   openedCards[0].className += " match";
   openedCards = [];
   matchedCardsCounter += 1;
-  if (matchedCardsCounter === 8) {
+  if (matchedCardsCounter === 1) { // alterar para 8 para voltar ao normal
     displayMsg();
-    stopClock();
   }
 };
 
@@ -111,30 +115,37 @@ function decStars() {
 };
 
 // show message when finish the game
-// fix to display stars instead number
+//fix -- display stars until number
 function displayMsg() {
   var z = document.getElementsByClassName("fa-star").length;
   if (confirm("\nYou won in " + moves + " moves with " + z + " stars" + "\nYour time: " + sHors + ":" + sMins + ":" + sSecs + "\n\nPlay again?")) {
-    location.reload(); //change that when fix restartCards
+    play(); //fix -- relogio esta iniciando ao clicar em ok
   } else {
-    stopClock();
+    clearTimeout(timer); //fix -- timer nao reinicia apos clicar em "cancel"
   }
 };
 
-//set default starts and moves
+//set default variables, shuffle cards and distribute cards on deck
 function play() {
   stars.innerHTML = '<li><i class="fa fa-star"></i></li>'.repeat(3);
   document.querySelector(".moves").innerHTML = 0;
-};
-
-// game restart button
-document.querySelector(".restart").onclick = function restart() {
-  location.reload(); //change that later
+  clock1.innerHTML = "0" + 0 + ":" + "0" + 0 + ":" + "0" + 0;
+  deck.innerHTML = "";
+  moves = 0;
+  openedCards = [];
+  matchedCardsCounter = 0;
+  timer = "";
+  clock = false;
+  sHors = "0" + 0;
+  sMins = "0" + 0;
+  sSecs = 0;
+  shuffle(cards);
+  distCards();
 };
 
 // timer
 function getSecs() {
-  if (clock == true) {
+  if (clock) {
     sSecs++;
     if (sSecs == 60) {
       sSecs = 0;
@@ -147,23 +158,7 @@ function getSecs() {
       if (sHors <= 9) sHors = "0" + sHors;
     }
     if (sSecs <= 9) sSecs = "0" + sSecs;
-    clock1.innerHTML = sHors + "<font color=#000000>:</font>" + sMins + "<font color=#000000>:</font>" + sSecs;
+    clock1.innerHTML = sHors + ":" + sMins + ":" + sSecs;
   }
   timer = setTimeout('getSecs()', 1000);
-};
-
-// start timer
-function startClock() {
-  clock = true;
-};
-
-//stop timer
-function stopClock() {
-  clearTimeout(timer);
-};
-
-//reset timer
-function restClock() {
-  clock1.innerHTML = "0" + 0 + ":" + "0" + 0 + ":" + "0" + 0;
-  clock = false;
 };
