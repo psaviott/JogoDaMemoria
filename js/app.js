@@ -92,7 +92,7 @@ function lockCard(card) {
   openedCards = [];
   matchedCardsCounter += 1;
   if (matchedCardsCounter === 1) { // alterar para 8 para voltar ao normal
-    displayMsg();
+    setTimeout("displayMsg()", 400);
   }
 };
 
@@ -107,27 +107,27 @@ function hideCard(card) {
 
 // add stars to rate the game
 function decStars() {
-  if (moves > 22) {
+  if (moves > 18) {
     stars.innerHTML = '<li><i class="fa fa-star"></i></li>';
-  } else if (moves > 15) {
+  } else if (moves > 10) {
     stars.innerHTML = '<li><i class="fa fa-star"></i></li>'.repeat(2);
   }
 };
 
 // show message when finish the game
-//fix -- display stars until number
 function displayMsg() {
   var z = document.getElementsByClassName("fa-star").length;
-  if (confirm("\nYou won in " + moves + " moves with " + z + " stars" + "\nYour time: " + sHors + ":" + sMins + ":" + sSecs + "\n\nPlay again?")) {
-    play(); //fix -- relogio esta iniciando ao clicar em ok
-  } else {
-    clearTimeout(timer); //fix -- timer nao reinicia apos clicar em "cancel"
-  }
+  clock = false;
+  $('#winnerText3').text(`Voce ganhou com ${moves} movimentos`);
+  $('#winnerText2').html('<li><i class="fa fa-star"></i></li>'.repeat(z));
+  $('#winnerText').text(`Seu tempo: ${sHors}:${sMins}:${sSecs}`);
+  $('#winnerModal').modal("show");
 };
 
 //set default variables, shuffle cards and distribute cards on deck
 function play() {
   stars.innerHTML = '<li><i class="fa fa-star"></i></li>'.repeat(3);
+  winnerText2.innerHTML = '';
   document.querySelector(".moves").innerHTML = 0;
   clock1.innerHTML = "0" + 0 + ":" + "0" + 0 + ":" + "0" + 0;
   deck.innerHTML = "";

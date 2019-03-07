@@ -9,8 +9,8 @@
   <meta charset="utf-8">
   <title>Jogo da Memória</title>
   <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-  <link rel="stylesheet prefetch" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">  <link rel="stylesheet" href="css/app.css">
+  <link href="https://fonts.googleapis.com/css?family=Freckle+Face" rel="stylesheet">  
   <link rel="stylesheet" href="css/media.css">
 </head>
 
@@ -30,7 +30,8 @@
         <li><i class="fa fa-star"></i></li>
       </ul>
 
-      <span class="moves col-md-2">3</span><div class="moves1">Movimentos</div>
+      <span class="moves col-md-2">3</span>
+      <div class="moves1">Movimentos</div>
 
       <div id="clock1" class=col-md-3""></div>
       <script>
@@ -95,8 +96,32 @@
         </li>
       </ul>
     </div>
-    <script src="js/app.js"></script>
-<p id="demo"></p>
+    <p id="demo"></p>
+  </div>
+
+  <div class="modal fade" id="winnerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel1">YOU WON!</h4>
+        </div>
+        <div class="modal-body">
+            <p id="winnerText3"></p>
+            <ul id="winnerText2"></ul>
+            <p id="winnerText"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" onclick="play(), $('#meuModal').modal('hide')" class="btn btn-primary" data-dismiss="modal">Play Again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="js/app.js"></script>
+
 </body>
 
 </html>
