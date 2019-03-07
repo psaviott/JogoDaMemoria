@@ -44,7 +44,6 @@ function shuffle(array) {
   return array;
 };
 
-
 //starts functions when a click
 deck.onclick = function(e) {
   if (e.target.nodeName !== "LI" || e.target.className.indexOf("match") > -1) {
@@ -66,7 +65,6 @@ function incMoves() {
 function showCard(card) {
   card.className = "card open show";
 };
-
 
 //hide or lock a card
 function handleOpenedCards(card) {
@@ -91,7 +89,7 @@ function lockCard(card) {
   openedCards[0].className += " match";
   openedCards = [];
   matchedCardsCounter += 1;
-  if (matchedCardsCounter === 1) { // alterar para 8 para voltar ao normal
+  if (matchedCardsCounter === 8) {
     setTimeout("displayMsg()", 400);
   }
 };
